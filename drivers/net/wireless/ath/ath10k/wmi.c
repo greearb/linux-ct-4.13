@@ -5429,7 +5429,7 @@ static void ath10k_wmi_op_rx(struct ath10k *ar, struct sk_buff *skb)
 		ath10k_wmi_queue_set_coverage_class_work(ar);
 		break;
 	default:
-		ath10k_warn(ar, "Unknown eventid: %d\n", id);
+		ath10k_warn(ar, "Unknown (main) eventid: %d\n", id);
 		break;
 	}
 
@@ -5562,8 +5562,11 @@ static void ath10k_wmi_10_1_op_rx(struct ath10k *ar, struct sk_buff *skb)
 	case WMI_10_1_PDEV_TEMPERATURE_EVENTID: /* Newer CT firmware supports this */
 		ath10k_wmi_event_temperature(ar, skb);
 		break;
+	case WMI_10_1_PDEV_BSS_CHAN_INFO_EVENTID: /* Newer CT firmware supports this */
+		ath10k_wmi_event_pdev_bss_chan_info(ar, skb);
+		break;
 	default:
-		ath10k_warn(ar, "Unknown eventid: %d\n", id);
+		ath10k_warn(ar, "Unknown (10.1) eventid: %d\n", id);
 		break;
 	}
 
@@ -5709,7 +5712,7 @@ static void ath10k_wmi_10_2_op_rx(struct ath10k *ar, struct sk_buff *skb)
 			   "received event id %d not implemented\n", id);
 		break;
 	default:
-		ath10k_warn(ar, "Unknown eventid: %d\n", id);
+		ath10k_warn(ar, "Unknown (10.2) eventid: %d\n", id);
 		break;
 	}
 
@@ -5822,7 +5825,7 @@ static void ath10k_wmi_10_4_op_rx(struct ath10k *ar, struct sk_buff *skb)
 		ath10k_wmi_event_csi_mesg(ar, skb);
 		break;
 	default:
-		ath10k_warn(ar, "Unknown eventid: %d\n", id);
+		ath10k_warn(ar, "Unknown (10.4) eventid: %d\n", id);
 		break;
 	}
 
