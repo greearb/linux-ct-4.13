@@ -2654,7 +2654,7 @@ static void ieee80211_rx_mgmt_auth(struct ieee80211_sub_if_data *sdata,
 	{
 		struct timeval tv;
 		do_gettimeofday(&tv);
-		sdata_info(sdata, "authenticated at: %lu.%lu\n",
+		sdata_info(sdata, "authenticated at: %lu.%06lu\n",
 			   tv.tv_sec, tv.tv_usec);
 	}
 
@@ -3181,7 +3181,7 @@ static void ieee80211_rx_mgmt_assoc_resp(struct ieee80211_sub_if_data *sdata,
 		struct timeval tv;
 		do_gettimeofday(&tv);
 		sdata_info(sdata,
-			   "RX %sssocResp from %pM (capab=0x%x status=%d aid=%d) at: %lu.%lu\n",
+			   "RX %sssocResp from %pM (capab=0x%x status=%d aid=%d) at: %lu.%06lu\n",
 			   reassoc ? "Rea" : "A", mgmt->sa,
 			   capab_info, status_code, (u16)(aid & ~(BIT(15) | BIT(14))),
 			   tv.tv_sec, tv.tv_usec);
@@ -3231,7 +3231,7 @@ static void ieee80211_rx_mgmt_assoc_resp(struct ieee80211_sub_if_data *sdata,
 		{
 			struct timeval tv;
 			do_gettimeofday(&tv);
-			sdata_info(sdata, "associated at: %lu.%lu\n",
+			sdata_info(sdata, "associated at: %lu.%06lu\n",
 				   tv.tv_sec, tv.tv_usec);
 		}
 
@@ -3805,7 +3805,7 @@ static int ieee80211_auth(struct ieee80211_sub_if_data *sdata)
 	{
 		struct timeval tv;
 		do_gettimeofday(&tv);
-		sdata_info(sdata, "send auth to %pM (try %d/%d) at: %lu.%lu\n",
+		sdata_info(sdata, "send auth to %pM (try %d/%d) at: %lu.%06lu\n",
 			   auth_data->bss->bssid, auth_data->tries,
 			   IEEE80211_AUTH_MAX_TRIES, tv.tv_sec,
 			   tv.tv_usec);
@@ -4632,7 +4632,7 @@ int ieee80211_mgd_auth(struct ieee80211_sub_if_data *sdata,
 	{
 		struct timeval tv;
 		do_gettimeofday(&tv);
-		sdata_info(sdata, "%pM authenticate with %pM at: %lu.%lu\n",
+		sdata_info(sdata, "%pM authenticate with %pM at: %lu.%06lu\n",
 			   sdata->dev->dev_addr, req->bss->bssid,
 			   tv.tv_sec, tv.tv_usec);
 	}
